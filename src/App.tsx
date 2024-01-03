@@ -1,7 +1,15 @@
-function App() {
-  return (
-    <div>hello</div>
-  );
-}
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LoginPage from './pages/loginpage/LoginPage'; 
 
-export default App;
+const MainComponent = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+      </Routes>
+    </Router>
+  );
+};
+
+export default MainComponent;
