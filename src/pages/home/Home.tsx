@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Header from '../../components/common/Header/header'; 
+import './Home.css';
+import '../../components/common/Header/header.css';
+
 
 interface Photo {
   id: number;
@@ -20,7 +24,7 @@ const HomePage = () => {
 
   return (
     <div>
-      {/* Navigation Bar here */}
+      <Header /> 
       <div className="photo-feed">
         {photos.map((photo: Photo) => (
           <div key={photo.id} className="photo-item">
@@ -29,7 +33,6 @@ const HomePage = () => {
           </div>
         ))}
       </div>
-      {/* Other components here */}
     </div>
   );
 };

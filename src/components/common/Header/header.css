@@ -1,0 +1,28 @@
+
+.header {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+  }
+  
+  .header .logo {
+    font-size: 24px;
+  }
+  
+  .header .navigation ul {
+    list-style: none;
+    display: flex;
+  }
+  
+  .header .navigation ul li {
+    margin: 0 10px;
+  }
+  
+  .header .navigation ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
