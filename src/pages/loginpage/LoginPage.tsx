@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../../Hooks/auth/Auth'; 
-import './LoginPage.css';
+import './LoginPage.css'; 
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate(); 
-
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -15,41 +14,32 @@ const LoginPage = () => {
         const isAuthenticated = login(username, password);
         if (isAuthenticated) {
             navigate('/home'); 
+        } else {
+            setErrorMessage('Invalid username or password');
         }
     };
-    
 
     return (
-        <div className="login-container"> 
-            <h2 className="login-title">Login</h2> 
-            <form onSubmit={handleSubmit} className="login-form"> 
+        <div className="login-page">
+        <div className="card-container">
+            {errorMessage && (
+                <div className="alert alert-danger">
+                    <span><b>Sorry!</b> - {errorMessage}</span>
+                </div>
+            )}
+            <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="username" className="form-label">Username:</label> 
-                    <input
-                        type="text"
-                        id="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        className="form-input"
-                    />
+                    <input id="username" type="text" className="form-control" placeholder="Email address" required autoFocus value={username} onChange={e => setUsername(e.target.value)} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="password" className="form-label">Password:</label> 
-                    <input
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="form-input" 
-                    />
+                    <input id="password" type="password" className="form-control" placeholder="Password" required value={password} onChange={e => setPassword(e.target.value)} />
                 </div>
-                <button type="submit" className="login-button">Login</button>
+                <button className="btn btn-lg btn-primary btn-block btn-signin" type="submit">Log in</button>
             </form>
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            <a href="/signup" className="sign-up">Don't have an account? — Sign Up</a>
         </div>
+    </div>
     );
 };
 
 export default LoginPage;
-
-export {};

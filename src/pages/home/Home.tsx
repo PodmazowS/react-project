@@ -3,6 +3,7 @@ import axios from 'axios';
 import Header from '../../components/common/Header/header'; 
 import './Home.css';
 import '../../components/common/Header/header.css';
+import Footer from '../../components/common/Footer/footer';
 
 
 interface Photo {
@@ -33,6 +34,7 @@ const HomePage = () => {
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   );
 };
