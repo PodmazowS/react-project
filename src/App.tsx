@@ -6,19 +6,19 @@ import Home from './pages/home/Home';
 import UserProfilePage from './pages/UserProfilePage/UserProfile';
 import PageNotFound from './pages/pagenotfound/PageNotFound';
 import Footer from './components/common/Footer/footer';
+import PostsPage from './pages/postpage/PostPage';
 
 
 const MainComponent = () => {
   return (
     <Router>
-      <Header />
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/home" element={<Home />}  />
         <Route path="/user/:userID" element={<UserProfilePage />} /> 
         <Route path="*" element={<PageNotFound />} />
+        <Route path="/posts" element={<PostsPage />} />
       </Routes>
-      <Footer />
     </Router>
   );
 };

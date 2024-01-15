@@ -10,9 +10,10 @@ const Header: React.FC = () => {
       </div>
       <nav className="navigation">
         <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/upload">Upload Photo</Link></li>
           <li><Link to="/user/1">Profile</Link></li>
+          <li><Link to="/posts">Posts</Link></li>
+          <li><Link to="/upload">Upload Photo</Link></li>
+          <li><Link to="/">LogOut</Link></li>
         </ul>
       </nav>
     </header>
@@ -21,4 +22,3 @@ const Header: React.FC = () => {
 
 export default Header;
 
-export{};
