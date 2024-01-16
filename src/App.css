@@ -2,3 +2,7 @@
     margin: 0;
     font-family: 'Roboto', sans-serif;
 }
+
+.content{
+    min-height: 100vh;
+}

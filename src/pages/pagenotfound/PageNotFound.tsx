@@ -6,7 +6,7 @@ const PageNotFound: React.FC = () => {
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
       <h1>404 - Page Not Found</h1>
       <p>Sorry, the page you are looking for does not exist.</p>
-      <p>You can always go back to the <Link to="/home">homepage</Link>.</p>
+      <p>You can always go back to the <Link to="/login">homepage</Link>.</p>
     </div>
   );
 };

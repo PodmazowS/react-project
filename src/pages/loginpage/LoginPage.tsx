@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../../Hooks/auth/Auth'; 
 import './LoginPage.css'; 
+import { useAuth } from '../../Hooks/useAuth/useAuth';
 
 const LoginPage = () => {
+    const navigate = useNavigate(); 
+    const {login}=useAuth();
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate(); 
+
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const isAuthenticated = login(username, password);
         if (isAuthenticated) {
-            navigate('/home'); 
+            navigate('/'); 
         } else {
             setErrorMessage('Invalid username or password');
         }

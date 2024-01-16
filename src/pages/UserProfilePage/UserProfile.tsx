@@ -47,6 +47,7 @@ const UserProfilePage: React.FC = () => {
 
 
     return (
+
         <div className="user-profile">
             <div className="user-info">
                 <h2>{user.name}</h2>

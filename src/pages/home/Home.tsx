@@ -24,8 +24,8 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div>
-      <Header /> 
+    
+  
       <div className="photo-feed">
         {photos.map((photo: Photo) => (
           <div key={photo.id} className="photo-item">
@@ -34,8 +34,7 @@ const HomePage = () => {
           </div>
         ))}
       </div>
-      <Footer />
-    </div>
+    
   );
 };
 
