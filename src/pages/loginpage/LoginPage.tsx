@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './LoginPage.css'; 
 import { useAuth } from '../../Hooks/useAuth/useAuth';
 
-const LoginPage = () => {
+export const LoginPage = () => {
     const navigate = useNavigate(); 
     const {login}=useAuth();
 
@@ -16,7 +16,7 @@ const LoginPage = () => {
         event.preventDefault();
         const isAuthenticated = login(username, password);
         if (isAuthenticated) {
-            navigate('/'); 
+            navigate('/users'); 
         } else {
             setErrorMessage('Invalid username or password');
         }
@@ -39,10 +39,9 @@ const LoginPage = () => {
                 </div>
                 <button className="btn btn-lg btn-primary btn-block btn-signin" type="submit">Log in</button>
             </form>
-            <a href="/signup" className="sign-up">Don't have an account? — Sign Up</a>
         </div>
     </div>
     );
 };
 
-export default LoginPage;
+

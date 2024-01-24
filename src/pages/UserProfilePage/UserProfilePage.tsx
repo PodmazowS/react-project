@@ -1,37 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { User, Post,Photo } from '../../types';
 
-interface User {
-    name: string;
-    email: string;
-}
 
-interface Post {
-    id: number;
-    title: string;
-    body: string;
-}
-
-interface Photo {
-    id: number;
-    thumbnailUrl: string;
-    title: string;
-}
-
-const UserProfilePage: React.FC = () => {
+export const UserProfilePage: React.FC = () => {
     const [user, setUser] = useState<User | null>(null);
     const [posts, setPosts] = useState<Post[]>([]);
     const [photos, setPhotos] = useState<Photo[]>([]);
 
     
-    const { userID } = useParams<{ userID: string }>();
+    const { id } = useParams<{ id: string }>();
 
     useEffect(() => {
         const fetchUserData = async () => {
-            const userResponse = await axios.get(`https://jsonplaceholder.typicode.com/users/${userID}`);
-            const postsResponse = await axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${userID}`);
-            const photosResponse = await axios.get(`https://jsonplaceholder.typicode.com/photos?albumId=${userID}`);
+            const userResponse = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
+            const postsResponse = await axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${id}`);
+            const photosResponse = await axios.get(`https://jsonplaceholder.typicode.com/photos?albumId=${id}`);
             
             setUser(userResponse.data);
             setPosts(postsResponse.data);
@@ -39,7 +24,11 @@ const UserProfilePage: React.FC = () => {
         };
 
         fetchUserData();
-    }, [userID]);
+    }, []);
+
+    if (!id) {
+        return <div>Error</div>;
+    }
 
     if (!user) {
         return <div>Loading...</div>;
@@ -75,6 +64,3 @@ const UserProfilePage: React.FC = () => {
     );
 };
 
-export default UserProfilePage;
-
-export {};

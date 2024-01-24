@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './PostPage.css'; 
+import { Post } from '../../types';
 
-interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
-
-const PostsPage: React.FC = () => {
+export const PostPage: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
@@ -36,4 +30,4 @@ const PostsPage: React.FC = () => {
     );
     };
     
-    export default PostsPage;
+

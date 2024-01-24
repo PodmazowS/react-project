@@ -38,18 +38,6 @@
     border-color: #f5c6cb;
 }
 
-.card-container .sign-up {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-    color: #007BFF;
-    font-size: 14px;
-}
-
-.card-container .sign-up:hover {
-    text-decoration: underline;
-}
-
 .card-container .form-group input {
     border: none;
     border-bottom: 2px solid #007BFF;
