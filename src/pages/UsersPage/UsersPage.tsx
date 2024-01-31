@@ -1,46 +1,35 @@
-import  {FC, useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { userService } from '../../api/userService';
+import { Link } from 'react-router-dom';
+import './UsersPage.css';
 
-import { photoService } from '../../api';
-import { Photo } from '../../types';
-import { PhotoComponent } from '../../components';
-import "./UsersPage.css";
-
-
-export const UsersPage:FC = () => {
-  const [photos, setPhotos] = useState<Photo[]>([]);
-
-const [searchResults, setSearchResults] = useState<Photo[]>([]);
-
-  const [search, setSearch] = useState<string>('');
-
-const onSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-  setSearch(event.target.value);
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  // Add other user properties as needed
 }
 
-const performSearch = () => {
-  setSearchResults(photos.filter(photo => photo.title.includes(search)));
-}
+export const UsersPage: React.FC = () => {
+  const [users, setUsers] = useState<User[]>([]);
 
-  // useEffect(() => {
-  //   photoService.getAll()
-  //     .then(res=>{
-  //       setPhotos(res);
-  //       setSearchResults(res);
-  //     })
-  //     .catch(error => console.error('Error fetching photos:', error));
-  // }, []);
+  useEffect(() => {
+    userService.getAll().then(setUsers);
+  }, []);
 
-
-  return <div>
-    <div className="searchbar">
-      <input type="text" placeholder="Search.." name="search" value={search} onChange={onSearchInput}/>
-      <button type="submit" onClick={performSearch}>Search</button>
+  return (
+    <div className="m-10">
+      <h1>Users</h1>
+      {users.map((user) => (
+        <div key={user.id} className='p-2'>
+          <h2>{user.name}</h2>
+          <p>{user.email}</p>
+          <Link to={`/user/${user.id}`} className="profile-link">View Profile</Link>
+          {/* Display other user properties as needed */}
+        </div>
+      ))}
     </div>
-  
-    <div className="photo-feed">
-        {searchResults.map((photo: Photo) => <PhotoComponent photo={photo}/>)}
-    </div>
-   </div>
+  );
 };
 
+export default UsersPage;

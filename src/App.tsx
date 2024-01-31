@@ -5,6 +5,7 @@ import { Header,Footer } from './components';
 import { PrivateRoute } from './hoc';
 import { AlbumPage, HomePage,LoginPage, NotFoundPage, PostPage, UserProfilePage, UsersPage } from './pages';
 import './App.css';
+import './index.css';
 
 
 const MainComponent:FC = () => {
