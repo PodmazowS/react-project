@@ -25,10 +25,11 @@ export const AlbumPage:FC<Props>=({})=>{
     }
 
 if(!photos){
-return <div>Loading...</div>
+return <div>Loading..</div>
 }
 
     return <div className="photos">
         {photos.map(photo=><PhotoComponent key={photo.id} photo={photo}/>)}
     </div>
+    
 }
